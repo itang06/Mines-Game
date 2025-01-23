@@ -1,0 +1,148 @@
+body {
+  background-color: #0f212e;
+}
+
+#game {
+  display: grid;
+  gap: 5px;
+  height: 98vh;
+  justify-items: center;
+  align-items: start;
+  margin-top: 80px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(5, auto);
+  gap: 10px;
+  max-width: fit-content;
+}
+
+.box {
+  width: 80px;
+  height: 80px;
+  background-color: #2f4553;
+  display: grid;
+  border-radius: 5px;
+  box-shadow: 0 4px 2px -2px gray;
+  transition: background-color 0.2s ease;
+}
+
+.hover:hover {
+  background-color: #506a7f;
+  transform: translateY(-2px);
+}
+
+.bomb {
+  box-shadow: none;
+  animation: popup 0.5s forwards, colorChangeBomb 0.2s 0.2s forwards;
+}
+
+.game-ended {
+  background-color: #2f4553;
+}
+
+.opened {
+  animation: popup 0.5s forwards, colorChange 0.2s 0.2s forwards;
+}
+
+.btn-primary {
+  font-size: 20px;
+  background-color: #00e701;
+  border: none;
+  color: black;
+}
+
+.btn-primary:hover {
+  background-color: #1fff20;
+  color: black;
+}
+
+.btn-primary:active {
+  background-color: #1fff20 !important;
+  color: black !important;
+}
+
+.container-fluid {
+  max-width: 1200px;
+}
+
+.heading {
+  text-align: center;
+  color: white;
+  font-family: "Play", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.title {
+  font-size: clamp(2rem, 10vw, 8rem);
+  font-family: "Play", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.big-top {
+  background-color: #213743;
+  border: 10px solid #2f4553;
+}
+
+.multiplier-box {
+  background-color: #2f4553;
+  border: 3px solid #506a7f;
+  border-radius: 10px;
+  padding: 1px;
+  margin: 20px auto;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gained {
+  text-align: center;
+  color: #00e701;
+  font-size: clamp(1rem, 3vw, 5rem);
+  background-color: #213743;
+  border: 4px solid #00e701;
+  border-radius: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0px auto;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: "Play", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@keyframes popup {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: #2f4553;
+  }
+  100% {
+    background-color: #071824;
+    box-sizing: border-box;
+    border: 2px solid #506a7f;
+  }
+}
+
+@keyframes colorChangeBomb {
+  0% {
+    background-color: #2f4553;
+  }
+  100% {
+    background-color: red;
+    box-sizing: border-box;
+  }
+}
