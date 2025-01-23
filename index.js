@@ -35,10 +35,6 @@ function startUp() {
 
 startUp();
 
-$(".btn-primary").on("click", function () {
-  console.log("hello");
-});
-
 $(".box").click(function () {
   if (lost) {
     return;
@@ -55,14 +51,20 @@ $(".box").click(function () {
     $("p").text("You Lost! Refresh to restart.");
     lost = true;
     playSound();
-  } else {
-    if (!$(this).hasClass("opened")) {
-      $(this).addClass("opened");
-      points++;
-      playSound();
-      $("p").html(`Returns: ${calculateMultiplier()}x`);
-    }
-    $("#score > h1").text("Score: " + points);
+  } else if (!$(this).hasClass("opened")) {
+    $(this).addClass("opened");
+    points++;
+    playSound();
+    $("p").html(`Returns: ${calculateMultiplier()}x`);
+  }
+  if (points == 24) {
+    $(`${bombBox}`).addClass("bomb");
+    $("#game").before(
+      `<h2 class="gained mb-0">You Won ${calculateMultiplier()}x! :D</h2>`
+    );
+    const cashoutSound = new Audio("./sounds/cashout.mp3");
+    cashoutSound.play();
+    clicked = true;
   }
 });
 
@@ -90,14 +92,6 @@ $(".btn-primary").on("click", function () {
       $(this).addClass("bomb");
     }
   });
-  if (points == 24) {
-    $("#game").before(
-      `<h2 class="gained mb-0">You Won ${calculateMultiplier()}x! :D</h2>`
-    );
-    const cashoutSound = new Audio("./sounds/cashout.mp3");
-    cashoutSound.play();
-    clicked = true;
-  }
   if (!lost && clicked == false) {
     $("#game").before(
       `<h2 class="gained mb-0">You gained a <strong>${calculateMultiplier()}x</strong> return!</h2>`
