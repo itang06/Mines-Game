@@ -60,7 +60,7 @@ $(".box").click(function () {
       $(this).addClass("opened");
       points++;
       playSound();
-      $("p").html(`Gains: x${calculateMultiplier()}`);
+      $("p").html(`Returns: ${calculateMultiplier()}x`);
     }
     $("#score > h1").text("Score: " + points);
   }
